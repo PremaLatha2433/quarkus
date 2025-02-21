@@ -102,3 +102,17 @@ allFilms{
     surname
   }
 }
+11.query heroWithDefaultSurname {
+  heroesWithSurname{
+    name
+    surname
+    lightSaber
+  }
+}
+12.query heroWithSurnames {
+  heroesWithSurname(surname: "Vader") {
+    name
+    surname
+    lightSaber
+  }
+}

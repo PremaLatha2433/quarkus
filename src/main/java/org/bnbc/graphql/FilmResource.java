@@ -10,6 +10,26 @@ import org.eclipse.microprofile.graphql.*;
 
 import java.util.List;
 
+/**
+ * GraphQL is a query language for APIs and a runtime for fulfilling those queries
+ * with your existing data. GraphQL provides a complete and understandable description
+ * of the data in your API, gives clients the power to ask for exactly what they need
+ * and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools
+ * GraphQL was originally developed by Facebook in 2012 and has been an open standard since 2015.
+ *
+ * GraphQL is not a replacement for REST API specification but merely an alternative.
+ * Unlike REST, GraphQL API’s have the ability to benefit the client by:
+ *
+ * Preventing Over-fetching and Under-fetching
+ * REST APIs are server-driven fixed data responses that cannot be determined by the client.
+ * Although the client does not require all the fields the client must retrieve all the data
+ * hence Over-fetching. A client may also require multiple REST API calls according to the
+ * first call (HATEOAS) to retrieve all the data that is required thereby Under-fetching.
+ *
+ * API Evolution
+ * Since GraphQL API’s returns data that are requested by the client adding additional fields
+ * and capabilities to existing API will not create breaking changes to existing clients.
+ */
 @GraphQLApi
 public class FilmResource {
 
@@ -74,5 +94,9 @@ public class FilmResource {
     @Mutation
     public Hero deleteHero(int id) {
         return service.deleteHero(id);
+    }
+    @Query
+   public List<Hero> getHeroesWithSurname(@DefaultValue("Skywalker") String surname) {
+        return service.getHeroesBySurname(surname);
     }
 }
