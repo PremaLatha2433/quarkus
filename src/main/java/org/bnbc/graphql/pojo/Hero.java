@@ -1,4 +1,4 @@
-package org.bnbc.graphql;
+package org.bnbc.graphql.pojo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,4 @@ public class Hero implements Character {
     public String getSurname() {
         return surname;
     }
-}
-enum LightSaber {
-    RED, BLUE, GREEN
 }

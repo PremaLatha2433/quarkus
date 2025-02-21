@@ -1,4 +1,4 @@
-package org.bnbc.graphql;
+package org.bnbc.graphql.pojo;
 
 public class Ally implements Character{
     public String name;

@@ -1,4 +1,4 @@
-package org.bnbc.graphql;
+package org.bnbc.graphql.service;
 
 
 import io.smallrye.graphql.api.Union;

@@ -1,6 +1,11 @@
 package org.bnbc.graphql;
 
-import jakarta.inject.Inject;
+import org.bnbc.graphql.pojo.Ally;
+import org.bnbc.graphql.pojo.Character;
+import org.bnbc.graphql.pojo.Film;
+import org.bnbc.graphql.pojo.Hero;
+import org.bnbc.graphql.service.GalaxyService;
+import org.bnbc.graphql.service.SearchResult;
 import org.eclipse.microprofile.graphql.*;
 
 import java.util.List;

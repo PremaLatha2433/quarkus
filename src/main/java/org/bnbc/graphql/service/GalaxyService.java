@@ -1,6 +1,8 @@
-package org.bnbc.graphql;
+package org.bnbc.graphql.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import org.bnbc.graphql.pojo.*;
+import org.bnbc.graphql.pojo.Character;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -111,8 +113,8 @@ public class GalaxyService {
     public List<Ally> getAllAllies() {
         return allies;
     }
-    public List<Character> getAllCharacters() {
-        List<Character> characters = new ArrayList<>();
+    public List<org.bnbc.graphql.pojo.Character> getAllCharacters() {
+        List<org.bnbc.graphql.pojo.Character> characters = new ArrayList<>();
         characters.addAll(heroes);
         characters.addAll(allies);
         return characters;
