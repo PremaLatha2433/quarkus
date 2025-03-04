@@ -1,3 +1,8 @@
+how to add graphql to your project : ./mvnw quarkus:add-extension -Dextensions='quarkus-smallrye-graphql' it will add below dependency in your pom
+<dependency>
+    <groupId>io.quarkus</groupId>
+    <artifactId>quarkus-smallrye-graphql</artifactId>
+</dependency>
 url:http://localhost:8080/q/graphql-ui/
 schema url:http://localhost:8080/graphql/schema.graphql
 1.{

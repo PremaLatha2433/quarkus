@@ -18,6 +18,7 @@ import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.jboss.logging.Logger;
+import org.slf4j.LoggerFactory;
 
 import static jakarta.ws.rs.core.Response.*;
 
@@ -25,15 +26,18 @@ import static jakarta.ws.rs.core.Response.*;
 @RequestScoped
 public class PostResource {
     private final static Logger LOGGER = Logger.getLogger(PostResource.class.getName());
+    private static final org.slf4j.Logger log = LoggerFactory.getLogger(PostResource.class);
     private final PostRepository posts;
     @Context
     ResourceContext resourceContext;
     @Context
     UriInfo uriInfo;
+
     @Inject
     public PostResource(PostRepository posts) {
         this.posts = posts;
     }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(
@@ -54,6 +58,7 @@ public class PostResource {
     public Response getAllPosts() {
         return ok(this.posts.all()).build();
     }
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(
@@ -79,16 +84,18 @@ public class PostResource {
                         .build(saved.getId())
         ).build();
     }
+
     @Path("{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getPostById(@PathParam("id") final String id) {
         Post post = this.posts.getById(id);
-        if(post == null){
-            throw new PostNotFoundException("Post Not Found with this id"+id);
+        if (post == null) {
+            throw new PostNotFoundException("Post Not Found with this id" + id);
         }
         return ok(post).build();
     }
+
     @Path("{id}")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
@@ -97,8 +104,10 @@ public class PostResource {
         existed.setTitle(post.getTitle());
         existed.setName(post.getName());
         Post saved = this.posts.save(existed);
+        log.info("saved data :{}" + saved);
         return noContent().build();
     }
+
     @Path("{id}")
     @DELETE
     public Response deletePost(@PathParam("id") final String id) {
